@@ -1,0 +1,7 @@
+[user]
+	name = zach
+	email = zach@zachpatrick.com
+[core]
+	excludesfile = /Users/zach/.gitignore
+[pull]
+	rebase = false
