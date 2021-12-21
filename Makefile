@@ -1,2 +1,2 @@
 reset:
-	sh scripts/reset.sh
+	sh .scripts/reset.sh
