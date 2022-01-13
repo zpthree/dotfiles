@@ -71,10 +71,21 @@ function t() {
 
 function merge() {
   local branch=$(git rev-parse --abbrev-ref HEAD)
-  git checkout master && git merge $branch
+
+  if [ "$1" != "" ]; then
+    git checkout $1 && git merge $branch
+  else
+    git checkout master && git merge $branch
+  fi
 }
 
-alias compress="optimizt"
+function compress() {
+  if [ "$1" != "-d" ]; then
+    optimizt
+  else
+    optimizt ~/downloads/$2
+  fi
+}
 
 # yarn
 alias ys="yarn start"
@@ -100,3 +111,7 @@ if [ -d "$HOME/develop/pulsar" ]; then
   source $HOME/develop/pulsar/deploy.sh
   source $HOME/develop/pulsar/connect.sh
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

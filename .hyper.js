@@ -110,7 +110,7 @@ module.exports = {
 
     // for advanced config flags please refer to https://hyper.is/#cfg
     summon: {
-      hideDock: true,
+      // hideDock: true,
       // use karabiner to remap caps lock to command+control+option+shift
       hotkey: 'Cmd+Ctrl+Option+Shift+h'
     },
