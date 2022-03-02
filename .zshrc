@@ -33,6 +33,7 @@ alias ld="colorls --sort-dirs -lt" # sort by date
 alias ls="colorls --sort-dirs"
 alias gem-install="sudo gem install -n /usr/local/bin"
 alias code="code-insiders" # since i'm using VS Code - Insiders
+alias apps="cd ~/develop/pulsar/apps"
 
 # Git
 alias lg='lazygit' # lazygit
@@ -84,6 +85,15 @@ function compress() {
   fi
 }
 
+function connect() {
+  echo ${PWD##*/}
+	if [ "$1" = "staging" ]; then
+		ssh ${PWD##*/}-staging
+	else
+		ssh ${PWD##*/}
+	fi
+}
+
 # yarn
 alias ys="yarn start"
 alias yb="yarn build"
@@ -103,11 +113,6 @@ alias bs="browser-sync"
 
 # * fun aliases
 alias weather="curl wttr.in"
-
-if [ -d "$HOME/develop/pulsar" ]; then
-  source $HOME/develop/pulsar/deploy.sh
-  source $HOME/develop/pulsar/connect.sh
-fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
