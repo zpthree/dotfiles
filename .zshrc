@@ -1,6 +1,6 @@
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/bin:/usr/local/bin:$PATH"
 
-export ZSH="/Users/zach/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 eval "$(rbenv init - --path)"
 eval "$(pyenv init - --path)"
 # eval "$(pyenv virtualenv-init - --path)"
@@ -9,8 +9,7 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 export PULSAR_CONF_REPO="zpthree/pulsar-conf"
 
 # * Plugins
-plugins=(git)
-plugins=(npm vagrant command-not-found last-working-dir per-directory-history web-search gulp laravel5 copydir extract frontend-search lol zsh-autosuggestions)
+plugins=(npm git vagrant command-not-found last-working-dir per-directory-history web-search gulp laravel5 copypath extract frontend-search lol)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -19,9 +18,12 @@ ZSH_THEME="cobalt2"
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 source $(dirname $(gem which colorls))/tab_complete.sh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # * Aliases
 alias mykey="pbcopy < ~/.ssh/id_rsa.pub"
+alias ssh="/usr/bin/ssh" # doing this because warp was being weird
+alias staging="ssh $STAGING" # $STAGING is defined in .zprofile
 
 function getport() { lsof -n -i4TCP:"${1}" }
 function killport() { kill -9 "${1}" }
@@ -30,12 +32,7 @@ function killport() { kill -9 "${1}" }
 alias ld="colorls --sort-dirs -lt" # sort by date
 alias ls="colorls --sort-dirs"
 alias gem-install="sudo gem install -n /usr/local/bin"
-
-# Spotify
-alias spot="spotify"
-alias p="spot p"
-alias vd="spot -"
-alias vu="spot +"
+alias code="code-insiders" # since i'm using VS Code - Insiders
 
 # Git
 alias lg='lazygit' # lazygit
